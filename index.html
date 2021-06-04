@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>form to google sheet</title>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+
+<body style="padding: 20px 50px;">
+  <form method="POST" name="google-sheet">
+  <div class="mb-3">
+  <label for="name" class="form-label">Full Name</label>
+  <input type="text" name="name" class="form-control" id="name" placeholder="">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<input type="submit" name="submit">
+</form>
+<script type="text/javascript">
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwi-8XsjcV-hwC8TpAmFoz2Yhzrgdla-BrCTUbw-E-d5Q-V2OlyKMtEzA22tPupDbtA-A/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+</script>
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>
